@@ -26,21 +26,15 @@ public class Main<names> {
                 .collect(Collectors.toList());
         System.out.println(recruit);
 
-        separator("Список работоспособных мужчин с высшим образованием:");
-        List<Person> workableMan = persons.stream()
-                .filter(person -> person.getSex() == Sex.MAN && person.getEducation() == Education.HIGHER)
-                .filter(person -> person.getAge() > 17 && person.getAge() < 65)
+        separator("Список работоспособных женщин и мужчин с высшим образованием:");
+        List<Person> workable = persons.stream()
+                .filter(person -> person.getEducation() == Education.HIGHER)
+                .filter(person -> person.getAge() > 17)
+                .filter(person -> person.getSex() == Sex.MAN && person.getAge() < 65 ||
+                                  person.getSex() == Sex.WOMAN && person.getAge() < 60)
                 .sorted(Comparator.comparing(Person::getFamily))
                 .collect(Collectors.toList());
-        System.out.println(workableMan);
-
-        separator("Список работоспособных женщин с высшим образованием:");
-        List<Person> workableWoman = persons.stream()
-                .filter(person -> person.getSex() == Sex.WOMAN && person.getEducation() == Education.HIGHER)
-                .filter(person -> person.getAge() > 17 && person.getAge() < 60)
-                .sorted(Comparator.comparing(Person::getFamily))
-                .collect(Collectors.toList());
-        System.out.println(workableWoman);
+        System.out.println(workable);
 
     }
 
