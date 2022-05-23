@@ -1,11 +1,11 @@
 package src;
 
 public class Person {
-    private String name;
-    private String family;
-    private int age;
-    private Sex sex;
-    private Education education;
+    private String name = null;
+    private String family = null;
+    private int age = 0;
+    private Sex sex = null;
+    private Education education = null;
 
     public Person(String name, String family, int age, Sex sex, Education education) {
         this.name = name;
@@ -43,6 +43,6 @@ public class Person {
                 ", age=" + age +
                 ", sex=" + sex +
                 ", education=" + education +
-                '}';
+                '}' + "\n";
     }
 }
